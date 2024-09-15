@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b14d800-eaff-4df5-b5ff-e90bf4105923" name="Changes" comment="feat: add token bucket rate limiter">
+    <list default="true" id="0b14d800-eaff-4df5-b5ff-e90bf4105923" name="Changes" comment="refactor: add timewindow as class field">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TokenBucketRateLimiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TokenBucketRateLimiter.java" afterDir="false" />
@@ -84,7 +84,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1726401933299</updated>
-      <workItem from="1726401934422" duration="6135000" />
+      <workItem from="1726401934422" duration="9643000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add token bucket rate limiter">
       <option name="closed" value="true" />
@@ -94,7 +94,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726411281118</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="refactor: add timewindow as class field">
+      <option name="closed" value="true" />
+      <created>1726412140981</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726412140981</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +110,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: add token bucket rate limiter" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add token bucket rate limiter" />
+    <MESSAGE value="refactor: add timewindow as class field" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: add timewindow as class field" />
   </component>
 </project>
