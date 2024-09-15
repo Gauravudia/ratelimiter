@@ -1,5 +1,9 @@
-# Token Bucket Rate Limiter
+# Rate Limiter
+ref: 
+- https://medium.com/geekculture/system-design-design-a-rate-limiter-81d200c9d392
+- https://medium.com/@devenchan/implementing-rate-limiting-in-java-from-scratch-leaky-bucket-and-tokenn-bucket-implementation-63a944ba93aa
 
+## Token Bucket Rate Limiter
 This project implements a **Token Bucket Rate Limiter** in Java. The Token Bucket algorithm is used to control the rate at which requests are allowed. It works by allowing a fixed number of tokens in a bucket, which are replenished at a constant rate. Each request consumes a token, and when no tokens are available, the request is rejected.
 
 ## Implementation Overview
