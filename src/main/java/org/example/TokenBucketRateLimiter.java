@@ -19,7 +19,7 @@ public class TokenBucketRateLimiter implements RateLimiter {
         synchronized (this) {
             if (currentBucketSize > 0) {
                 currentBucketSize--;
-                System.out.println("Request accepted!");
+                System.out.println("Request accepted! Current bucket size: "+ currentBucketSize);
                 return true;
             }
         }
@@ -34,9 +34,9 @@ public class TokenBucketRateLimiter implements RateLimiter {
         long noOfTokenToAdd = (long) (Math.floor((currentTimeStamp - lastRefillTimestamp)* refillRatePerMillis));
         if(noOfTokenToAdd > 0){
             synchronized (this) {
-                System.out.println("Refilled no of tokens: " + noOfTokenToAdd);
                 lastRefillTimestamp = currentTimeStamp;
                 currentBucketSize = Math.min(noOfTokenToAdd + currentBucketSize, maxBucketSize);
+                System.out.println("Refilled tokens: "+ noOfTokenToAdd + " current bucket size: "+ currentBucketSize);
             }
         }
     }
