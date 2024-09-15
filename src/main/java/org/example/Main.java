@@ -2,13 +2,11 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        RateLimiter rateLimiter = new TokenBucketRateLimiter(3);
-        rateLimiter.tryAcquire();
-        rateLimiter.tryAcquire();
-        rateLimiter.tryAcquire();
-        rateLimiter.tryAcquire();
-
-        Thread.sleep(60000);
-        rateLimiter.tryAcquire();
+        // refill after every minute, timeWindowMillis: 60000
+        RateLimiter rateLimiter = new TokenBucketRateLimiter(3, 60000);
+        for (int i = 0; i < 10; i++) {
+            rateLimiter.tryAcquire();
+            Thread.sleep(10000);
+        }
     }
 }

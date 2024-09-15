@@ -2,11 +2,13 @@ package org.example;
 
 public class TokenBucketRateLimiter implements RateLimiter {
     private final long maxBucketSize;
+    private final long timeWindowMillis;
     private long currentBucketSize;
     private long lastRefillTimestamp = System.currentTimeMillis();
 
-    TokenBucketRateLimiter(long bucketSize){
+    TokenBucketRateLimiter(long bucketSize, long timeWindowMillis){
         this.maxBucketSize = bucketSize;
+        this.timeWindowMillis = timeWindowMillis;
         currentBucketSize = maxBucketSize;
     }
 
@@ -24,7 +26,7 @@ public class TokenBucketRateLimiter implements RateLimiter {
 
     public void refill(){
         long currentTimeStamp = System.currentTimeMillis();
-        long noOfTokenToAdd = ((currentTimeStamp - lastRefillTimestamp)/60000)* maxBucketSize;
+        long noOfTokenToAdd = ((currentTimeStamp - lastRefillTimestamp)/ timeWindowMillis)* maxBucketSize;
         if(noOfTokenToAdd > 0){
             System.out.println("Refilled no of tokens: "+ noOfTokenToAdd);
             lastRefillTimestamp = currentTimeStamp;
