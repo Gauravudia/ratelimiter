@@ -27,6 +27,8 @@ public class TokenBucketRateLimiter implements RateLimiter {
 
     public void refill(){
         long currentTimeStamp = System.currentTimeMillis();
+        // with timeWindowMillis division => long noOfTokenToAdd = (59000 / 60000) * 3 = 0 * 3 = 0 tokens
+        // with refillRatePerMillis => long noOfTokenToAdd = 59000 * 0.00005 = 1 tokens, where refillRatePerMillis = 3/60000 = 0.00005
         long noOfTokenToAdd = (long) (Math.floor((currentTimeStamp - lastRefillTimestamp)* refillRatePerMillis));
         if(noOfTokenToAdd > 0){
             System.out.println("Refilled no of tokens: "+ noOfTokenToAdd);
