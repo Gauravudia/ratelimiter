@@ -14,15 +14,17 @@ public class TokenBucketRateLimiter implements RateLimiter {
     }
 
     @Override
-    public synchronized boolean tryAcquire(){
-       refill();
-       if(currentBucketSize >0){
-           currentBucketSize--;
-           System.out.println("Request accepted!");
-           return true;
-       }
-       System.out.println("Too many requests. Please try again.");
-       return false;
+    public  boolean tryAcquire() {
+        refill();
+        synchronized (this) {
+            if (currentBucketSize > 0) {
+                currentBucketSize--;
+                System.out.println("Request accepted!");
+                return true;
+            }
+        }
+        System.out.println("Too many requests. Please try again.");
+        return false;
     }
 
     public void refill(){
@@ -31,9 +33,11 @@ public class TokenBucketRateLimiter implements RateLimiter {
         // with refillRatePerMillis => long noOfTokenToAdd = 59000 * 0.00005 = 1 tokens, where refillRatePerMillis = 3/60000 = 0.00005
         long noOfTokenToAdd = (long) (Math.floor((currentTimeStamp - lastRefillTimestamp)* refillRatePerMillis));
         if(noOfTokenToAdd > 0){
-            System.out.println("Refilled no of tokens: "+ noOfTokenToAdd);
-            lastRefillTimestamp = currentTimeStamp;
-            currentBucketSize = Math.min(noOfTokenToAdd+currentBucketSize, maxBucketSize);
+            synchronized (this) {
+                System.out.println("Refilled no of tokens: " + noOfTokenToAdd);
+                lastRefillTimestamp = currentTimeStamp;
+                currentBucketSize = Math.min(noOfTokenToAdd + currentBucketSize, maxBucketSize);
+            }
         }
     }
 }
